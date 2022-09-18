@@ -27,7 +27,7 @@ DEBUG = True
 
 APPEND_SLASH = True
 
-ALLOWED_HOSTS = ["localhost", "ammar-akram-capstone.us-south.cf.appdomain.cloud"]
+ALLOWED_HOSTS = ["localhost", "ammar-akram-capstone.us-south.cf.appdomain.cloud", '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(STATIC_ROOT, 'media')
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = "/djangoapp"
+LOGOUT_REDIRECT_URL = "/djangoapp"

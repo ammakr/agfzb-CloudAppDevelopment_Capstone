@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from urllib import response
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
@@ -9,18 +10,14 @@ from django.contrib import messages
 from datetime import datetime
 import logging
 import json
+from .forms import RegisterForm
 
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-
-# Create your views here.
-
-
 def about(request):
     if request.method == "GET":
         return render(request, "djangoapp/about.html")
-
 
 
 def contact(request):
@@ -28,16 +25,23 @@ def contact(request):
         return render(request, "djangoapp/contact.html")
 
 
-# Create a `login_request` view to handle sign in request
-# def login_request(request):
-# ...
+def registration_request(request):  
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            
+        return redirect("/djangoapp")
+    else:
+        form = RegisterForm()
+            
+    return render(request, "registration.html", {"form": form})
+
+def login_request(request):
+    return redirect("/djangoapp")
 
 # Create a `logout_request` view to handle sign out request
 # def logout_request(request):
-# ...
-
-# Create a `registration_request` view to handle sign up request
-# def registration_request(request):
 # ...
 
 # Update the `get_dealerships` view to render the index page with a list of dealerships
