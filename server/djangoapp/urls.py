@@ -10,13 +10,13 @@ urlpatterns = [
     path(route='contact/', view=views.contact, name='contact'),
     path(route='about/', view=views.about, name='contact'),
     path('signup/', view=views.registration_request),
-    path('', include('django.contrib.auth.urls'))
-
+    # path for login
+    path('', include('django.contrib.auth.urls')),
+    path("logout/", view=views.logout_request)
     # path for contact us view
 
     # path for registration
 
-    # path for login
 
     # path for logout
 

@@ -18,10 +18,10 @@
         <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" style="color: rgb(43, 238, 238);" href="#">{{ user.username }}</a>
+                <p class="nav-link"  style="color: rgb(43, 238, 238);">({{ user.username }})</p>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  style="color: rgb(43, 238, 238);" href="logout/">Logout</a>
+                <a class="nav-link"  href="/djangoapp/logout">Logout</a>
             </li>
             {% else %}
                 <li>
